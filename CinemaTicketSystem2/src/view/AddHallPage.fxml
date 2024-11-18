@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.AddHallController">
+    <HBox spacing="10" style="-fx-background-color: #336699;">
+        <Button text="AdminHome" onAction="#goBackToAdminHome"/>
+    </HBox>
+
+    <GridPane hgap="10" vgap="10" style="-fx-padding: 20;">
+        <Label text="Cinema ID: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="cinemaIdField" GridPane.rowIndex="0" GridPane.columnIndex="1" editable="false"/>
+
+        <Label text="Hall Name: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="hallNameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Hall Type: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="hallTypeField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Seat Count: " GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="seatCountField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <HBox spacing="10" alignment="CENTER" GridPane.rowIndex="4" GridPane.columnIndex="1" style="-fx-padding: 10;">
+            <Button text="Save" onAction="#saveHall"/>
+            <Button text="Cancel" onAction="#goBackToHallManagement"/>
+        </HBox>
+    </GridPane>
+</VBox>

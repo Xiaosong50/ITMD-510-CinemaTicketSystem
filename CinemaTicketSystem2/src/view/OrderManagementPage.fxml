@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.OrderManagementController">
+    <HBox spacing="10" style="-fx-background-color: #336699;">
+        <Button text="Admin Home" onAction="#goToAdminHome"/>
+        <Button text="Admin Profile" onAction="#goToAdminProfile"/>
+    </HBox>
+
+    <TableView fx:id="orderTable" prefHeight="400" style="-fx-padding: 10;">
+        <columns>
+            <TableColumn text="Order ID" fx:id="orderIdColumn" prefWidth="80"/>
+            <TableColumn text="User ID" fx:id="userIdColumn" prefWidth="80"/>
+            <TableColumn text="Movie Title" fx:id="movieTitleColumn" prefWidth="100"/>
+            <TableColumn text="Duration(minute)" fx:id="durationColumn" prefWidth="100"/>
+            <TableColumn text="Cinema" fx:id="cinemaNameColumn" prefWidth="100"/>
+            <TableColumn text="Hall" fx:id="hallNameColumn" prefWidth="100"/>
+            <TableColumn text="Seat Number" fx:id="seatNumbersColumn" prefWidth="100"/>
+            <TableColumn text="Start Time" fx:id="startTimeColumn" prefWidth="130"/>
+            <TableColumn text="End Time" fx:id="endTimeColumn" prefWidth="130"/>
+            <TableColumn text="Total Price" fx:id="totalPriceColumn" prefWidth="80"/>
+            <TableColumn text="Payment Method" fx:id="paymentMethodColumn" prefWidth="100"/>
+            <TableColumn text="Order Date" fx:id="orderDateColumn" prefWidth="130"/>
+        </columns>
+    </TableView>
+</VBox>

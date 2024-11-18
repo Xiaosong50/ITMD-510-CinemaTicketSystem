@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="500.0" prefWidth="500.0" spacing="20" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="controller.AdminHomeController">
+    <HBox prefHeight="33.0" prefWidth="408.0" spacing="10" style="-fx-background-color: #336699;">
+        <Button onAction="#goToAdminHome" text="Admin Home" />
+        <Button onAction="#goToAdminProfile" text="Admin Profile" />
+    </HBox>
+
+    <VBox alignment="CENTER" prefHeight="461.0" prefWidth="500.0" spacing="15" style="-fx-padding: 20;">
+        <Label style="-fx-font-size: 18px;" text="Management Options" />
+        <Button onAction="#goToMovieManagement" style="-fx-pref-width: 200px;" text="Movie Management" />
+        <Button onAction="#goToCinemaManagement" style="-fx-pref-width: 200px;" text="Cinema Management" />
+        <Button onAction="#goToOrderManagement" style="-fx-pref-width: 200px;" text="Order Management" />
+        <Button onAction="#goToAdminManagement" style="-fx-pref-width: 200px;" text="Admin Management" />
+    </VBox>
+</VBox>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.MovieAddController">
+    <HBox spacing="10" style="-fx-background-color: #336699;">
+        <Button text="Admin Home" onAction="#goToAdminHome"/>
+        <Button text="BackToMovieManagement" onAction="#goToMovieManagement"/>
+    </HBox>
+
+    <GridPane hgap="10" vgap="10" style="-fx-padding: 10;">
+        <Label text="Movie Tittle: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="titleField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Director: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="directorField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Release Date: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <DatePicker fx:id="releaseDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Movie Description: " GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextArea fx:id="descriptionArea" GridPane.rowIndex="3" GridPane.columnIndex="1" prefRowCount="3"/>
+
+        <Label text="Duration (minute)" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <TextField fx:id="durationField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+        <Button text="Save" onAction="#saveMovie" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+    </GridPane>
+</VBox>

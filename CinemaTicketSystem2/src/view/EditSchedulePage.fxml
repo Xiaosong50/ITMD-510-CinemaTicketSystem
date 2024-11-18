@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.EditScheduleController">
+    <children>
+        <HBox spacing="10" style="-fx-background-color: #336699;">
+            <Button text="BackToScheduleManagement" onAction="#goBackToScheduleManagement"/>
+        </HBox>
+
+        <GridPane hgap="10" vgap="10" style="-fx-padding: 10;">
+            <Label text="Select Cimema: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="cinemaComboBox" onAction="#loadHallsForSelectedCinema" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <TextField fx:id="cinemaIdField" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+
+            <Label text="Select Hall: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="hallComboBox" onAction="#updateHallIdField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <TextField fx:id="hallIdField" editable="false" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+        </GridPane>
+
+        <GridPane hgap="10" vgap="10" style="-fx-padding: 20;">
+            <Label text="Movie Schedule ID：" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="scheduleIdField" GridPane.rowIndex="2" GridPane.columnIndex="1" editable="false"/>
+
+            <Label text="Movie Title: " GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="movieTitleField" GridPane.rowIndex="3" GridPane.columnIndex="1" editable="false"/>
+
+            <Label text="Start Date: " GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="startDatePicker" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+            <Label text="Start Time: " GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <HBox spacing="5" GridPane.rowIndex="5" GridPane.columnIndex="1">
+                <ComboBox fx:id="hourComboBox" prefWidth="60"/>
+                <Label text=":"/>
+                <ComboBox fx:id="minuteComboBox" prefWidth="60"/>
+            </HBox>
+
+            <Label text="End Time: " GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <TextField fx:id="endTimeField" GridPane.rowIndex="6" GridPane.columnIndex="1" editable="false"/>
+
+            <Label text="Ticket Price: " GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <TextField fx:id="ticketPriceField" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+            <Button text="Save" onAction="#saveSchedule" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+        </GridPane>
+    </children>
+</VBox>

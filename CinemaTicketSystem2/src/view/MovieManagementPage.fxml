@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.MovieManagementController">
+    <HBox spacing="10" style="-fx-background-color: #336699;">
+        <Button text="Admin Home" onAction="#goToAdminHome"/>
+        <Button text="Admin Profile" onAction="#goToAdminProfile"/>
+    </HBox>
+
+    <TableView fx:id="movieTable" prefHeight="400">
+        <columns>
+            <TableColumn text="Movie ID" fx:id="movieIdColumn" prefWidth="80"/>
+            <TableColumn text="Movie Title" fx:id="titleColumn" prefWidth="150"/>
+            <TableColumn text="Director" fx:id="directorColumn" prefWidth="120"/>
+            <TableColumn text="Release Date" fx:id="releaseDateColumn" prefWidth="100"/>
+            <TableColumn text="Duration(minute)" fx:id="durationColumn" prefWidth="80"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER" style="-fx-padding: 10;">
+        <Button text="Add Movie" onAction="#addMovie"/>
+        <Button text="Edit Movie" onAction="#editMovie"/>
+        <Button text="Delete Movie" onAction="#deleteMovie"/>
+        <Button text="Manage Schedules" onAction="#manageSchedules"/>
+    </HBox>
+
+    <HBox alignment="CENTER" style="-fx-padding: 10;">
+        <Button text="Back" onAction="#goToAdminHome"/>
+    </HBox>
+</VBox>

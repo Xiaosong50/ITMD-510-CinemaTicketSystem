@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.MovieDetailController">
+    <VBox spacing="10" prefWidth="600" layoutY="0.0">
+        <HBox spacing="10" style="-fx-background-color: #336699;">
+            <Button text="System Home" onAction="#goToSystemHome"/>
+            <Button text="Personal Page" onAction="#goToPersonalPage"/>
+        </HBox>
+
+        <VBox spacing="10" style="-fx-padding: 10;">
+            <Label text="Movie Detail Information" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+            <Label fx:id="titleLabel" text="Movie Title: " style="-fx-font-size: 16px;" />
+            <Label fx:id="directorLabel" text="Director: " style="-fx-font-size: 14px;" />
+            <Label fx:id="actorsLabel" text="Actor: " style="-fx-font-size: 14px;" />
+            <Label fx:id="releaseDateLabel" text="Release Date: " style="-fx-font-size: 14px;" />
+            <Label fx:id="descriptionLabel" text="Description: " style="-fx-font-size: 14px;" wrapText="true" />
+        </VBox>
+
+        <VBox spacing="10" style="-fx-padding: 10;">
+            <Label text="Schedule Information" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+            <TableView fx:id="scheduleTable">
+                <columns>
+                    <TableColumn text="Cinema" fx:id="cinemaColumn" prefWidth="100" />
+                    <TableColumn text="Hall" fx:id="hallColumn" prefWidth="100" />
+                    <TableColumn text="Hall Type" fx:id="hallTypeColumn" prefWidth="100" />
+                    <TableColumn text="Start Time" fx:id="startTimeColumn" prefWidth="150" />
+                    <TableColumn text="Remaining Seats" fx:id="remainingSeatsColumn" prefWidth="100" />
+                </columns>
+            </TableView>
+            <Button text="View Remaining Seats" onAction="#viewRemainingSeats" style="-fx-font-size: 14px;" />
+        </VBox>
+    </VBox>
+</AnchorPane>

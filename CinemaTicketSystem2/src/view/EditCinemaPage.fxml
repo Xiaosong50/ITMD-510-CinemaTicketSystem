@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.EditCinemaController">
+    <HBox spacing="10" style="-fx-background-color: #336699;">
+        <Button text="BackToCinemaManagement" onAction="#goBackToCinemaManagement"/>
+    </HBox>
+
+    <GridPane hgap="10" vgap="10" style="-fx-padding: 20;">
+        <Label text="Cinema ID: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="cinemaIdField" GridPane.rowIndex="0" GridPane.columnIndex="1" editable="false"/>
+
+        <Label text="Cinema Name: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="cinemaNameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Cinema Address: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="cinemaAddressField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Cinema Phone: " GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="cinemaPhoneField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Button text="Save" onAction="#saveCinema" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+    </GridPane>
+</VBox>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.MovieScheduleManagementController">
+    <HBox spacing="10" style="-fx-background-color: #336699;">
+        <Button text="Admin Home" onAction="#goToAdminHome"/>
+        <Button text="Admin Profile" onAction="#goToAdminProfile"/>
+    </HBox>
+
+    <TableView fx:id="scheduleTable" prefHeight="400">
+        <columns>
+            <TableColumn text="Movie Schedule ID" fx:id="scheduleIdColumn" prefWidth="80"/>
+            <TableColumn text="Movie Title" fx:id="movieTitleColumn" prefWidth="150"/>
+            <TableColumn text="Cinema" fx:id="cinemaNameColumn" prefWidth="120"/>
+            <TableColumn text="Hall" fx:id="hallNameColumn" prefWidth="100"/>
+            <TableColumn text="Hall Type" fx:id="hallTypeColumn" prefWidth="100"/>
+            <TableColumn text="Start Time" fx:id="startTimeColumn" prefWidth="150"/>
+            <TableColumn text="End Time" fx:id="endTimeColumn" prefWidth="150"/>
+            <TableColumn text="Ticket Price" fx:id="ticketPriceColumn" prefWidth="80"/>
+            <TableColumn text="Remaining Seats" fx:id="remainingSeatsColumn" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER" style="-fx-padding: 10;">
+        <Button text="Add Schedule" onAction="#addSchedule"/>
+        <Button text="Edit Schedule" onAction="#editSchedule"/>
+        <Button text="Delete Schedule" onAction="#deleteSchedule"/>
+    </HBox>
+
+    <HBox alignment="CENTER" style="-fx-padding: 10;">
+        <Button text="Back" onAction="#goToMovieManagement"/>
+    </HBox>
+</VBox>

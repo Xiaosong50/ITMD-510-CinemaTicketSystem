@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.SystemHomeController">
+    <VBox spacing="10" prefWidth="600" layoutY="0.0">
+        <HBox spacing="10" style="-fx-background-color: #336699; ">
+            <Button text="System Home" onAction="#goToSystemHome"/>
+            <Button text="Personal Page" onAction="#goToPersonalPage"/>
+        </HBox>
+
+        <HBox spacing="10" style="-fx-padding: 10;">
+            <Label text="Search: " style="-fx-font-size: 14px;" />
+            <TextField fx:id="searchField" promptText="Movie Title, Director or Cinema" style="-fx-font-size: 14px;" />
+            <Button text="Search" onAction="#handleSearch" style="-fx-font-size: 14px;" />
+        </HBox>
+
+        <TableView fx:id="movieTable" prefHeight="400" prefWidth="600" onMouseClicked="#handleMovieTableClick">
+            <columns>
+                <TableColumn text="Movie Title" fx:id="titleColumn" prefWidth="200" />
+                <TableColumn text="Director" fx:id="directorColumn" prefWidth="200" />
+                <TableColumn text="Release Date" fx:id="releaseDateColumn" prefWidth="200" />
+            </columns>
+        </TableView>
+    </VBox>
+</AnchorPane>
