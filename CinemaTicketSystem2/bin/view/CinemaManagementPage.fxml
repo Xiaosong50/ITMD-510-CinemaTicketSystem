@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.CinemaManagementController">
+    <HBox spacing="10" style="-fx-background-color: #336699;">
+        <Button text="Admin Home" onAction="#goToAdminHome"/>
+        <Button text="Admin Profile" onAction="#goToAdminProfile"/>
+    </HBox>
+
+    <TableView fx:id="cinemaTable" prefHeight="400">
+        <columns>
+            <TableColumn text="Cinema ID" fx:id="cinemaIdColumn" prefWidth="80"/>
+            <TableColumn text="Cinema Name" fx:id="cinemaNameColumn" prefWidth="150"/>
+            <TableColumn text="Cinema Address" fx:id="cinemaAddressColumn" prefWidth="200"/>
+            <TableColumn text="Cinema Phone" fx:id="cinemaPhoneColumn" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER" style="-fx-padding: 10;">
+        <Button text="Add Cinema" onAction="#addCinema"/>
+        <Button text="Edit Cinema" onAction="#editCinema"/>
+        <Button text="Delete Cinema" onAction="#deleteCinema"/>
+        <Button text="Manage Cinema" onAction="#manageHalls"/>
+    </HBox>
+
+    <HBox alignment="CENTER" style="-fx-padding: 10;">
+        <Button text="Back" onAction="#goToAdminHome"/>
+    </HBox>
+</VBox>

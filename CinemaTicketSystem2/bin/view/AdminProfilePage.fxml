@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.AdminProfileController">
+    <HBox spacing="10" style="-fx-background-color: #336699;">
+        <Button text="Admin Home" onAction="#goToAdminHome"/>
+        <Button text="Admin Profile" onAction="#goToAdminProfilePage"/>
+    </HBox>
+
+    <GridPane hgap="10" vgap="10" style="-fx-padding: 10;">
+        <Label text="Name: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="adminNameField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Password: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <PasswordField fx:id="adminPasswordField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Phone: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="adminPhoneField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+		
+		<Label text="Position:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="adminPositionField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Button text="Save" onAction="#updateAdminInfo" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+        <Button text="logout" onAction="#logOut" GridPane.rowIndex="4" GridPane.columnIndex="2" />
+
+    </GridPane>
+</VBox>

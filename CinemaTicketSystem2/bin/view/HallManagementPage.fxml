@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.HallManagementController">
+    <HBox spacing="10" style="-fx-background-color: #336699;">
+        <Button text="Admin Home" onAction="#goToAdminHome"/>
+        <Button text="BackToCinemaManagement" onAction="#goBackToCinemaManagement"/>
+    </HBox>
+
+    <TableView fx:id="hallTable" prefHeight="400">
+        <columns>
+            <TableColumn text="Hall ID" fx:id="hallIdColumn" prefWidth="80"/>
+            <TableColumn text="Hall Name" fx:id="hallNameColumn" prefWidth="150"/>
+            <TableColumn text="Hall Type" fx:id="hallTypeColumn" prefWidth="120"/>
+            <TableColumn text="Seat Count" fx:id="seatCountColumn" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER" style="-fx-padding: 10;">
+        <Button text="Add Hall" onAction="#addHall"/>
+        <Button text="Edit Hall" onAction="#editHall"/>
+        <Button text="Delete Hall" onAction="#deleteHall"/>
+    </HBox>
+</VBox>

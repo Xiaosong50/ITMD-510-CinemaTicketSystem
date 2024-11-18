@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.OrderConfirmationController">
+    <HBox spacing="10" style="-fx-background-color: #336699;">
+        <Button text="System Home" onAction="#goToSystemHome"/>
+        <Button text="Personal Page" onAction="#goToPersonalPage"/>
+    </HBox>
+
+    <GridPane hgap="10" vgap="10" style="-fx-padding: 10;">
+        <Label text="Movie: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Label fx:id="movieTitleLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        
+        <Label text="Cinema: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <Label fx:id="cinemaNameLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        
+        <Label text="Hall: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <Label fx:id="hallNameLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        
+        <Label text="Seat Number: " GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <Label fx:id="seatNumbersLabel" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        
+        <Label text="Ticket Price: " GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <Label fx:id="ticketPriceLabel" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+        
+        <Label text="Total Price: " GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+        <Label fx:id="totalPriceLabel" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10" style="-fx-background-color: #336699; -fx-padding: 10;">
+        <Label text="Choose payment Method: "/>
+        <ComboBox fx:id="paymentMethodComboBox"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER" style="-fx-padding: 10;">
+        <Button text="Payment" onAction="#processPayment"/>
+        <Button text="Back" onAction="#goBackToSeatSelection"/>
+    </HBox>
+</VBox>
