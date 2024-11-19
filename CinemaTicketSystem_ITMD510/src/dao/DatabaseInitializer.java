@@ -140,15 +140,6 @@ public class DatabaseInitializer {
 						+ "select * from (select 'Credit Card' as payment_name union all select 'Debit Card' union all select 'Paypal' union all select 'Apple Pay' union all select 'Google Pay') as temp "
 						+ "where not exists (select 1 from xl_payment where payment_name = 'Credit Card');",
 
-//			    "insert into xl_orders (user_id, schedule_id, order_date, total_price, payment_id) " +
-//			    "select * from (select 1 as user_id, 1 as schedule_id, '2024-11-01 09:00:00' as order_date, 50.00 as total_price, 1 as payment_id) as temp " +
-//			    "where not exists (select 1 from xl_orders where user_id = 1 and schedule_id = 1);",
-
-//			    "insert into xl_order_seat (order_id, seat_schedule_id) " +
-//			    "select xl_orders.order_id, xl_seat_schedule.seat_schedule_id " +
-//			    "from xl_orders join xl_seat_schedule on xl_seat_schedule.schedule_id = xl_orders.schedule_id " +
-//			    "where not exists (select 1 from xl_order_seat where xl_order_seat.order_id = xl_orders.order_id);",
-
 				"insert into xl_admin_management (manager_id, admin_id) "
 						+ "select * from (select 1 as manager_id, 2 as admin_id) as temp "
 						+ "where not exists (select 1 from xl_admin_management where manager_id = 1 and admin_id = 2);" };
