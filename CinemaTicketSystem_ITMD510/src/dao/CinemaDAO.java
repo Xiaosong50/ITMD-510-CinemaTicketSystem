@@ -18,7 +18,7 @@ public class CinemaDAO {
 
 			while (rs.next()) {
 				cinemas.add(new Cinema(rs.getInt("cinema_id"), rs.getString("cinema_name"),
-						rs.getString("cinema_address"),rs.getString("cinema_phone")));
+						rs.getString("cinema_address"), rs.getString("cinema_phone")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -36,8 +36,10 @@ public class CinemaDAO {
 
 			pstmt.setInt(1, hallId);
 			ResultSet rs = pstmt.executeQuery();
-			cinema = new Cinema(rs.getInt("cinema_id"), rs.getString("cinema_name"),
-					rs.getString("cinema_address"),rs.getString("cinema_phone"));
+			if (rs.next()) {
+				cinema = new Cinema(rs.getInt("cinema_id"), rs.getString("cinema_name"), rs.getString("cinema_address"),
+						rs.getString("cinema_phone"));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

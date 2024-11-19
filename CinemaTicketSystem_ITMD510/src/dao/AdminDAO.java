@@ -36,7 +36,7 @@ public class AdminDAO {
 		List<Admin> admins = new ArrayList<>();
 		String query = "SELECT a.admin_id, a.admin_name, a.admin_phone, a.admin_position " +
 				"FROM xl_admins a " +
-				"JOIN admin_management am ON a.admin_id = am.admin_id " +
+				"JOIN xl_admin_management am ON a.admin_id = am.admin_id " +
 				"WHERE am.manager_id = ?";
 
 		try (Connection connection = DBConnection.getConnection();
