@@ -13,7 +13,7 @@ import java.util.List;
 public class AdminDAO {
 
 	public Admin validateAdminLogin(String username, String password) {
-		String sql = "SELECT * FROM admins WHERE admin_name = ? AND admin_password = ?";
+		String sql = "SELECT * FROM xl_admins WHERE admin_name = ? AND admin_password = ?";
 		try (Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
 			stmt.setString(1, username);
@@ -35,7 +35,7 @@ public class AdminDAO {
 	public List<Admin> getAdminsByManager(int managerId) {
 		List<Admin> admins = new ArrayList<>();
 		String query = "SELECT a.admin_id, a.admin_name, a.admin_phone, a.admin_position " +
-				"FROM admins a " +
+				"FROM xl_admins a " +
 				"JOIN admin_management am ON a.admin_id = am.admin_id " +
 				"WHERE am.manager_id = ?";
 
@@ -57,7 +57,7 @@ public class AdminDAO {
 
 	public int isManager(int adminId) {
 		int count=0;
-		String query = "select count(manager_id) as count from admin_management where manager_id=?";
+		String query = "select count(manager_id) as count from xl_admin_management where manager_id=?";
 		try (Connection connection = DBConnection.getConnection();
 				PreparedStatement pstmt = connection.prepareStatement(query)) {
 
@@ -75,8 +75,8 @@ public class AdminDAO {
 
 
 	public void addAdmin(Admin admin, int managerId) {
-		String adminQuery = "INSERT INTO admins (admin_name, admin_password, admin_phone, admin_position) VALUES (?, ?, ?, ?)";
-		String managementQuery = "INSERT INTO admin_management (manager_id, admin_id) VALUES (?, ?)";
+		String adminQuery = "INSERT INTO xl_admins (admin_name, admin_password, admin_phone, admin_position) VALUES (?, ?, ?, ?)";
+		String managementQuery = "INSERT INTO xl_admin_management (manager_id, admin_id) VALUES (?, ?)";
 
 		try (Connection connection = DBConnection.getConnection();
 				PreparedStatement adminStmt = connection.prepareStatement(adminQuery, Statement.RETURN_GENERATED_KEYS);
@@ -107,7 +107,7 @@ public class AdminDAO {
 	}
 
 	public void updateAdminPosition(Admin admin) {
-		String query = "UPDATE admins SET admin_position = ? WHERE admin_id = ?";
+		String query = "UPDATE xl_admins SET admin_position = ? WHERE admin_id = ?";
 		try (Connection connection = DBConnection.getConnection();
 				PreparedStatement pstmt = connection.prepareStatement(query)) {
 
@@ -120,7 +120,7 @@ public class AdminDAO {
 	}
 
 	public void deleteAdmin(int adminId) {
-		String query = "DELETE FROM admins WHERE admin_id = ?";
+		String query = "DELETE FROM xl_admins WHERE admin_id = ?";
 		try (Connection connection = DBConnection.getConnection();
 				PreparedStatement pstmt = connection.prepareStatement(query)) {
 
@@ -132,7 +132,7 @@ public class AdminDAO {
 	}
 	
 	public Admin getAdminById(int adminId) {
-        String query = "SELECT * FROM admins WHERE admin_id = ?";
+        String query = "SELECT * FROM xl_admins WHERE admin_id = ?";
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
 
@@ -154,7 +154,7 @@ public class AdminDAO {
     }
 	
 	public boolean updateAdmin(Admin admin) {
-        String query = "UPDATE admins SET admin_name = ?, admin_password = ?, admin_phone = ? WHERE admin_id = ?";
+        String query = "UPDATE xl_admins SET admin_name = ?, admin_password = ?, admin_phone = ? WHERE admin_id = ?";
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
 

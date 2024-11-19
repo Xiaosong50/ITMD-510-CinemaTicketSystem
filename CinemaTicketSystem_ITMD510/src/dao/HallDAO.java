@@ -11,7 +11,7 @@ public class HallDAO {
 
     public List<Hall> getHallsByCinemaId(int cinemaId) {
         List<Hall> halls = new ArrayList<>();
-        String query = "SELECT hall_id,cinema_id, hall_name, hall_type, seat_count FROM hall WHERE cinema_id = ?";
+        String query = "SELECT hall_id,cinema_id, hall_name, hall_type, seat_count FROM xl_hall WHERE cinema_id = ?";
 
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
@@ -30,7 +30,7 @@ public class HallDAO {
     }
     
     public boolean addHall(Hall hall) {
-        String query = "INSERT INTO hall (cinema_id, hall_name, hall_type, seat_count) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO xl_hall (cinema_id, hall_name, hall_type, seat_count) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
@@ -54,7 +54,7 @@ public class HallDAO {
     
     public Hall getNewHallBycinemaId(int cinemaId) {
     	Hall hall = new Hall();
-        String query = "SELECT hall_id,cinema_id, hall_name, hall_type, seat_count FROM hall WHERE cinema_id = ?";
+        String query = "SELECT hall_id,cinema_id, hall_name, hall_type, seat_count FROM xl_hall WHERE cinema_id = ?";
 
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
@@ -74,7 +74,7 @@ public class HallDAO {
     
     public void updateHall(Hall hall) {
         int seatCount = getSeatCountByHall(hall);
-        String query = "UPDATE hall SET hall_name = ?, hall_type = ?, seat_count = ? WHERE hall_id = ?";
+        String query = "UPDATE xl_hall SET hall_name = ?, hall_type = ?, seat_count = ? WHERE hall_id = ?";
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
             
@@ -95,7 +95,7 @@ public class HallDAO {
     
     public int getSeatCountByHall(Hall hall){
     	int seatCount = 0;
-    	String query = "SELECT seat_count FROM hall WHERE hall_id = ?";
+    	String query = "SELECT seat_count FROM xl_hall WHERE hall_id = ?";
 
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
@@ -112,7 +112,7 @@ public class HallDAO {
     }
     
     public void deleteHall(int hallId) {
-        String query = "DELETE FROM hall WHERE hall_id = ?";
+        String query = "DELETE FROM xl_hall WHERE hall_id = ?";
         
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {

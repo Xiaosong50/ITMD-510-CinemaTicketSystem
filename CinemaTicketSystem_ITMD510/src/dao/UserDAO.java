@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class UserDAO {
 
 	public User validateLogin(String username, String password) {
-	    String sql = "SELECT * FROM users WHERE user_name = ? AND user_password = ?";
+	    String sql = "SELECT * FROM xl_users WHERE user_name = ? AND user_password = ?";
 	    try (Connection conn = DBConnection.getConnection();
 	         PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -36,7 +36,7 @@ public class UserDAO {
 	}
 	
     public boolean registerUser(String username, String password, String gender, String email, String phone) {
-        String sql = "INSERT INTO users (user_name, user_password, user_gender, user_email, user_phone) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO xl_users (user_name, user_password, user_gender, user_email, user_phone) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -56,7 +56,7 @@ public class UserDAO {
     }
     
     public User getUser(int userId) {
-        String query = "SELECT * FROM users WHERE user_id = ?";
+        String query = "SELECT * FROM xl_users WHERE user_id = ?";
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
             pstmt.setInt(1, userId);
@@ -78,7 +78,7 @@ public class UserDAO {
     }
 
     public void updateUser(User user) {
-        String query = "UPDATE users SET user_name = ?, user_password = ?, user_gender = ?, user_phone = ?, user_email = ? WHERE user_id = ?";
+        String query = "UPDATE xl_users SET user_name = ?, user_password = ?, user_gender = ?, user_phone = ?, user_email = ? WHERE user_id = ?";
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
             pstmt.setString(1, user.getUserName());

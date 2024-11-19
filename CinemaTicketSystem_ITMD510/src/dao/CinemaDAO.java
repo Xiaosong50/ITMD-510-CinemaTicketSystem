@@ -10,7 +10,7 @@ public class CinemaDAO {
 
 	public List<Cinema> getAllCinemas() {
 		List<Cinema> cinemas = new ArrayList<>();
-		String query = "SELECT cinema_id, cinema_name, cinema_address, cinema_phone FROM cinema";
+		String query = "SELECT cinema_id, cinema_name, cinema_address, cinema_phone FROM xl_cinema";
 
 		try (Connection connection = DBConnection.getConnection();
 				Statement stmt = connection.createStatement();
@@ -28,7 +28,7 @@ public class CinemaDAO {
 
 	public Cinema getCinemaByHallId(int hallId) {
 		Cinema cinema = new Cinema();
-		String query = "select c.cinema_id,c.cinema_name,cinema_address, cinema_phone from cinema c join hall h on c.cinema_id=h.cinema_id\n"
+		String query = "select c.cinema_id,c.cinema_name,cinema_address, cinema_phone from xl_cinema c join xl_hall h on c.cinema_id=h.cinema_id "
 				+ "where h.hall_id=?";
 
 		try (Connection connection = DBConnection.getConnection();
@@ -45,7 +45,7 @@ public class CinemaDAO {
 	}
 
 	public void addCinema(Cinema cinema) {
-		String query = "INSERT INTO cinema (cinema_name, cinema_address, cinema_phone) VALUES (?, ?, ?)";
+		String query = "INSERT INTO xl_cinema (cinema_name, cinema_address, cinema_phone) VALUES (?, ?, ?)";
 
 		try (Connection connection = DBConnection.getConnection();
 				PreparedStatement pstmt = connection.prepareStatement(query)) {
@@ -60,7 +60,7 @@ public class CinemaDAO {
 	}
 
 	public void updateCinema(Cinema cinema) {
-		String query = "UPDATE cinema SET cinema_name = ?, cinema_address = ?, cinema_phone = ? WHERE cinema_id = ?";
+		String query = "UPDATE xl_cinema SET cinema_name = ?, cinema_address = ?, cinema_phone = ? WHERE cinema_id = ?";
 
 		try (Connection connection = DBConnection.getConnection();
 				PreparedStatement pstmt = connection.prepareStatement(query)) {
@@ -76,7 +76,7 @@ public class CinemaDAO {
 	}
 
 	public void deleteCinema(int cinemaId) {
-		String query = "DELETE FROM cinema WHERE cinema_id = ?";
+		String query = "DELETE FROM xl_cinema WHERE cinema_id = ?";
 
 		try (Connection connection = DBConnection.getConnection();
 				PreparedStatement pstmt = connection.prepareStatement(query)) {

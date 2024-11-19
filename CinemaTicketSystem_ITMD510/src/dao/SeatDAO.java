@@ -12,8 +12,8 @@ public class SeatDAO {
 
 	public List<Seat> getSeatsForSchedule(int scheduleId) {
 		List<Seat> seats = new ArrayList<>();
-		String query = "SELECT s.seat_id, s.seat_number, ss.is_seat_sold " + "FROM seat s "
-				+ "JOIN seat_schedule ss ON s.seat_id = ss.seat_id " + "WHERE ss.schedule_id = ?";
+		String query = "SELECT s.seat_id, s.seat_number, ss.is_seat_sold " + "FROM xl_seat s "
+				+ "JOIN xl_seat_schedule ss ON s.seat_id = ss.seat_id " + "WHERE ss.schedule_id = ?";
 
 		try (Connection connection = DBConnection.getConnection();
 				PreparedStatement pstmt = connection.prepareStatement(query)) {
@@ -33,7 +33,7 @@ public class SeatDAO {
 	}
 
 	public static boolean addSeatsForHall(Hall hall) {
-		String seatQuery = "INSERT INTO seat (hall_id, seat_number) VALUES (?, ?)";
+		String seatQuery = "INSERT INTO xl_seat (hall_id, seat_number) VALUES (?, ?)";
 		String snum;
 		char srow='A';
 		int j=1;
@@ -65,7 +65,7 @@ public class SeatDAO {
 	}
 	
 	public static void deleteSeatByHallId(int hallId) {
-        String query = "DELETE FROM seat WHERE hall_id = ?";
+        String query = "DELETE FROM xl_seat WHERE hall_id = ?";
         
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {

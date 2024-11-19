@@ -12,8 +12,8 @@ public class MovieScheduleDAO {
 
 
 	public void addSchedule(MovieSchedule schedule) {
-	    String scheduleQuery = "INSERT INTO movie_schedule (movie_id, hall_id, start_time, end_time, ticket_price) VALUES (?, ?, ?, ?, ?)";
-	    String seatScheduleQuery = "INSERT INTO seat_schedule (schedule_id, seat_id, is_seat_sold) VALUES (?, ?, false)";
+	    String scheduleQuery = "INSERT INTO xl_movie_schedule (movie_id, hall_id, start_time, end_time, ticket_price) VALUES (?, ?, ?, ?, ?)";
+	    String seatScheduleQuery = "INSERT INTO xl_seat_schedule (schedule_id, seat_id, is_seat_sold) VALUES (?, ?, false)";
 	    
 	    try (Connection connection = DBConnection.getConnection();
 	         PreparedStatement scheduleStmt = connection.prepareStatement(scheduleQuery, Statement.RETURN_GENERATED_KEYS);
@@ -52,7 +52,7 @@ public class MovieScheduleDAO {
 	
 	private List<Integer> getSeatIdsByHallId(int hallId, Connection connection) throws SQLException {
 	    List<Integer> seatIds = new ArrayList<>();
-	    String query = "SELECT seat_id FROM seat WHERE hall_id = ?";
+	    String query = "SELECT seat_id FROM xl_seat WHERE hall_id = ?";
 
 	    try (PreparedStatement pstmt = connection.prepareStatement(query)) {
 	        pstmt.setInt(1, hallId);
@@ -79,7 +79,7 @@ public class MovieScheduleDAO {
     
     public  List<MovieSchedule> getSchedulesByHallId(int hallId) {
         List<MovieSchedule> schedules = new ArrayList<>();
-        String query = "SELECT * FROM movie_schedule WHERE hall_id = ?";
+        String query = "SELECT * FROM xl_movie_schedule WHERE hall_id = ?";
 
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
@@ -104,7 +104,7 @@ public class MovieScheduleDAO {
     }
 
     public void updateSchedule(MovieSchedule schedule) {
-        String query = "UPDATE movie_schedule SET hall_id = ?, start_time = ?, end_time = ?, ticket_price = ? WHERE schedule_id = ?";
+        String query = "UPDATE xl_movie_schedule SET hall_id = ?, start_time = ?, end_time = ?, ticket_price = ? WHERE schedule_id = ?";
 	    Connection connection = null;
 
         try {
@@ -145,14 +145,14 @@ public class MovieScheduleDAO {
     // 更新座位安排
     private void updateSeatSchedule(Connection connection, int scheduleId, int newHallId) throws SQLException {
         // 删除旧的座位安排
-        String deleteQuery = "DELETE FROM seat_schedule WHERE schedule_id = ?";
+        String deleteQuery = "DELETE FROM xl_seat_schedule WHERE schedule_id = ?";
         try (PreparedStatement deleteStmt = connection.prepareStatement(deleteQuery)) {
             deleteStmt.setInt(1, scheduleId);
             deleteStmt.executeUpdate();
         }
 
         // 添加新的座位安排
-        String insertQuery = "INSERT INTO seat_schedule (schedule_id, seat_id, is_seat_sold) VALUES (?, ?, false)";
+        String insertQuery = "INSERT INTO xl_seat_schedule (schedule_id, seat_id, is_seat_sold) VALUES (?, ?, false)";
         try (PreparedStatement insertStmt = connection.prepareStatement(insertQuery)) {
             List<Integer> seatIds = getSeatIdsByHallId(newHallId, connection);
             for (int seatId : seatIds) {
@@ -166,7 +166,7 @@ public class MovieScheduleDAO {
 
     // 根据ID获取排片信息
     private MovieSchedule getScheduleById(int scheduleId) {
-        String query = "SELECT * FROM movie_schedule WHERE schedule_id = ?";
+        String query = "SELECT * FROM xl_movie_schedule WHERE schedule_id = ?";
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
             pstmt.setInt(1, scheduleId);
@@ -190,7 +190,7 @@ public class MovieScheduleDAO {
     }
 
     public void deleteSchedule(int scheduleId) {
-        String query = "DELETE FROM movie_schedule WHERE schedule_id = ?";
+        String query = "DELETE FROM xl_movie_schedule WHERE schedule_id = ?";
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
             pstmt.setInt(1, scheduleId);

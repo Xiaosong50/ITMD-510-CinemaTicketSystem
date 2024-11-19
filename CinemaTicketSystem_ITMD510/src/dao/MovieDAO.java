@@ -13,7 +13,7 @@ public class MovieDAO {
     //获取所有电影信息
     public List<Movie> getAllMovies() {
         List<Movie> movies = new ArrayList<>();
-        String query = "SELECT movie_id, title, director, release_date, movie_description, duration FROM movie";
+        String query = "SELECT movie_id, title, director, release_date, movie_description, duration FROM xl_movie";
         
         try (Connection connection = DBConnection.getConnection();
              Statement stmt = connection.createStatement();
@@ -40,9 +40,9 @@ public class MovieDAO {
         List<Movie> movies = new ArrayList<>();
         // 确保正确引用电影表和影院表的字段
         String query = "SELECT m.movie_id, m.title, m.director, m.release_date, m.movie_description, m.duration " +
-                       "FROM movie m " +
-                       "LEFT JOIN movie_schedule ms ON m.movie_id = ms.movie_id " +
-                       "LEFT JOIN cinema c ON ms.hall_id = c.cinema_id " +
+                       "FROM xl_movie m " +
+                       "LEFT JOIN xl_movie_schedule ms ON m.movie_id = ms.movie_id " +
+                       "LEFT JOIN xl_cinema c ON ms.hall_id = c.cinema_id " +
                        "WHERE m.title LIKE ? OR m.director LIKE ? OR c.cinema_name LIKE ?";
         
         try (Connection connection = DBConnection.getConnection();
@@ -71,8 +71,8 @@ public class MovieDAO {
     
     public List<String> getActorsForMovie(int movieId) {
         List<String> actors = new ArrayList<>();
-        String query = "SELECT a.actor_name FROM actor a " +
-                       "JOIN movie_actor ma ON a.actor_id = ma.actor_id " +
+        String query = "SELECT a.actor_name FROM xl_actor a " +
+                       "JOIN xl_movie_actor ma ON a.actor_id = ma.actor_id " +
                        "WHERE ma.movie_id = ?";
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
@@ -90,11 +90,11 @@ public class MovieDAO {
     public List<MovieSchedule> getSchedulesForMovie(int movieId) {
         List<MovieSchedule> schedules = new ArrayList<>();
         String query = "SELECT ms.schedule_id, ms.movie_id,c.cinema_name,h.hall_id, h.hall_name, h.hall_type, m.title, ms.start_time, ms.end_time, ms.ticket_price, " +
-                "(SELECT COUNT(*) FROM seat_schedule ss WHERE ss.schedule_id = ms.schedule_id AND ss.is_seat_sold = false) AS remaining_seats " +
-                "FROM movie_schedule ms " +
-                "join movie m on ms.movie_id=m.movie_id "+
-                "JOIN hall h ON ms.hall_id = h.hall_id " +
-                "JOIN cinema c ON h.cinema_id = c.cinema_id " +
+                "(SELECT COUNT(*) FROM xl_seat_schedule ss WHERE ss.schedule_id = ms.schedule_id AND ss.is_seat_sold = false) AS remaining_seats " +
+                "FROM xl_movie_schedule ms " +
+                "join xl_movie m on ms.movie_id=m.movie_id "+
+                "JOIN xl_hall h ON ms.hall_id = h.hall_id " +
+                "JOIN xl_cinema c ON h.cinema_id = c.cinema_id " +
                 "WHERE ms.movie_id = ?";
 
         try (Connection connection = DBConnection.getConnection();
@@ -128,7 +128,7 @@ public class MovieDAO {
     
     // 添加新的电影
     public boolean addMovie(Movie movie) {
-        String query = "INSERT INTO movie (title, director, release_date, movie_description, duration) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO xl_movie (title, director, release_date, movie_description, duration) VALUES (?, ?, ?, ?, ?)";
         
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
@@ -150,7 +150,7 @@ public class MovieDAO {
 
     //更新电影信息
     public boolean updateMovie(Movie movie) {
-        String query = "UPDATE movie SET title = ?, director = ?, release_date = ?, movie_description = ?, duration = ? WHERE movie_id = ?";
+        String query = "UPDATE xl_movie SET title = ?, director = ?, release_date = ?, movie_description = ?, duration = ? WHERE movie_id = ?";
         
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
@@ -173,7 +173,7 @@ public class MovieDAO {
 
    // 删除电影
     public boolean deleteMovie(int movieId) {
-        String query = "DELETE FROM movie WHERE movie_id = ?";
+        String query = "DELETE FROM xl_movie WHERE movie_id = ?";
         
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {

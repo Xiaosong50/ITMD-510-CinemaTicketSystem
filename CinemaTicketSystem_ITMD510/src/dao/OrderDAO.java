@@ -12,7 +12,7 @@ import java.util.List;
 public class OrderDAO {
 
 	public int createOrder(int userId, MovieSchedule schedule, List<Seat> seats, double totalPrice, String paymentMethod) {
-	    String orderQuery = "INSERT INTO orders (user_id, schedule_id, order_date, total_price, payment_id) " +
+	    String orderQuery = "INSERT INTO xl_orders (user_id, schedule_id, order_date, total_price, payment_id) " +
 	                        "VALUES (?, ?, CURRENT_TIMESTAMP, ?, ?)";
 	    int orderId = -1;
 	    Connection connection = null;
@@ -41,12 +41,12 @@ public class OrderDAO {
 	            }
 	        }
 
-	        connection.commit(); // 提交事务
+	        connection.commit(); 
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	        if (connection != null) {
 	            try {
-	                connection.rollback(); // 出现异常时回滚事务
+	                connection.rollback(); 
 	            } catch (SQLException rollbackEx) {
 	                rollbackEx.printStackTrace();
 	            }
@@ -54,7 +54,7 @@ public class OrderDAO {
 	    } finally {
 	        if (connection != null) {
 	            try {
-	                connection.close(); // 确保连接被正确关闭
+	                connection.close(); 
 	            } catch (SQLException closeEx) {
 	                closeEx.printStackTrace();
 	            }
@@ -63,7 +63,7 @@ public class OrderDAO {
 	    return orderId;
 	}
 	private void saveOrderSeats(int orderId, List<Seat> seats, int scheduleId, Connection connection) throws SQLException {
-	    String orderSeatQuery = "INSERT INTO order_seat (order_id, seat_schedule_id) VALUES (?, ?)";
+	    String orderSeatQuery = "INSERT INTO xl_order_seat (order_id, seat_schedule_id) VALUES (?, ?)";
 	    try (PreparedStatement pstmt = connection.prepareStatement(orderSeatQuery)) {
 	        for (Seat seat : seats) {
 	            pstmt.setInt(1, orderId);
@@ -78,7 +78,7 @@ public class OrderDAO {
 
 	// 更新座位状态为已售出的方法
 	private void markSeatAsSold(int scheduleId, int seatId, Connection connection) throws SQLException {
-	    String updateQuery = "UPDATE seat_schedule SET is_seat_sold = TRUE WHERE schedule_id = ? AND seat_id = ?";
+	    String updateQuery = "UPDATE xl_seat_schedule SET is_seat_sold = TRUE WHERE schedule_id = ? AND seat_id = ?";
 	    try (PreparedStatement pstmt = connection.prepareStatement(updateQuery)) {
 	        pstmt.setInt(1, scheduleId);
 	        pstmt.setInt(2, seatId);
@@ -87,7 +87,7 @@ public class OrderDAO {
 	}
 
 	private int getPaymentId(String paymentMethod, Connection connection) throws SQLException {
-	    String paymentQuery = "SELECT payment_id FROM payment WHERE payment_name = ?";
+	    String paymentQuery = "SELECT payment_id FROM xl_payment WHERE payment_name = ?";
 	    try (PreparedStatement pstmt = connection.prepareStatement(paymentQuery)) {
 	        pstmt.setString(1, paymentMethod);
 	        ResultSet rs = pstmt.executeQuery();
@@ -103,14 +103,14 @@ public class OrderDAO {
 	    String query = "SELECT o.order_id,o.user_id, m.title AS movie_title, ms.start_time, ms.end_time, m.duration, " +
                 "c.cinema_name, h.hall_name, GROUP_CONCAT(s.seat_number) AS seat_numbers, o.total_price, " +
                 "p.payment_name AS payment_method, o.order_date " +
-                "FROM orders o " +
-                "JOIN movie_schedule ms ON o.schedule_id = ms.schedule_id " +
-                "JOIN movie m ON ms.movie_id = m.movie_id " +
-                "JOIN hall h ON ms.hall_id = h.hall_id " +
-                "JOIN cinema c ON h.cinema_id = c.cinema_id " +
-                "JOIN order_seat os ON o.order_id = os.order_id " +
-                "JOIN seat s ON os.seat_schedule_id = s.seat_id " +
-                "JOIN payment p ON o.payment_id = p.payment_id " +
+                "FROM xl_orders o " +
+                "JOIN xl_movie_schedule ms ON o.schedule_id = ms.schedule_id " +
+                "JOIN xl_movie m ON ms.movie_id = m.movie_id " +
+                "JOIN xl_hall h ON ms.hall_id = h.hall_id " +
+                "JOIN xl_cinema c ON h.cinema_id = c.cinema_id " +
+                "JOIN xl_order_seat os ON o.order_id = os.order_id " +
+                "JOIN xl_seat s ON os.seat_schedule_id = s.seat_id " +
+                "JOIN xl_payment p ON o.payment_id = p.payment_id " +
                 "WHERE o.user_id = ? " +
                 "GROUP BY o.order_id";
 
@@ -147,14 +147,14 @@ public class OrderDAO {
         String query = "SELECT o.order_id, o.user_id, m.title AS movie_title, m.duration, ms.start_time, ms.end_time, " +
                        "c.cinema_name, h.hall_name, GROUP_CONCAT(s.seat_number) AS seat_numbers, o.total_price, " +
                        "p.payment_name AS payment_method, o.order_date " +
-                       "FROM orders o " +
-                       "JOIN movie_schedule ms ON o.schedule_id = ms.schedule_id " +
-                       "JOIN movie m ON ms.movie_id = m.movie_id " +
-                       "JOIN hall h ON ms.hall_id = h.hall_id " +
-                       "JOIN cinema c ON h.cinema_id = c.cinema_id " +
-                       "JOIN order_seat os ON o.order_id = os.order_id " +
-                       "JOIN seat s ON os.seat_schedule_id = s.seat_id " +
-                       "JOIN payment p ON o.payment_id = p.payment_id " +
+                       "FROM xl_orders o " +
+                       "JOIN xl_movie_schedule ms ON o.schedule_id = ms.schedule_id " +
+                       "JOIN xl_movie m ON ms.movie_id = m.movie_id " +
+                       "JOIN xl_hall h ON ms.hall_id = h.hall_id " +
+                       "JOIN xl_cinema c ON h.cinema_id = c.cinema_id " +
+                       "JOIN xl_order_seat os ON o.order_id = os.order_id " +
+                       "JOIN xl_seat s ON os.seat_schedule_id = s.seat_id " +
+                       "JOIN xl_payment p ON o.payment_id = p.payment_id " +
                        "GROUP BY o.order_id";
 
         try (Connection connection = DBConnection.getConnection();
