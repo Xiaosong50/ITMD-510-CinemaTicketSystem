@@ -60,30 +60,28 @@ There are 14 tables the project used:
     
 The functions of the project:
     
-For user:
-
-    user login;
-    check movies;
-    search movies;
-    check movie details;
-    check movie schedules;
-    check seats;
-    buy tickets;
-    check and modify user profile information;
-    check history orders;
-    user logout.
+    For user:
+        user login;
+        check movies;
+        search movies;
+        check movie details;
+        check movie schedules;
+        check seats;
+        buy tickets;
+        check and modify user profile information;
+        check history orders;
+        user logout.
     
-for admin:
-
-    admin login;
-    movie management(check, add, modify and delete movie);
-    movie schedule management with selected movie(check, add, modify and delete movie schedule);
-    cinema management(check, add, modify and delete cinema);
-    hall management with selected cinema(check, add, modify and delete hall);
-    order management(check orders);
-    admin management(only manager have the Permission)(check, add, modify(only the position) and delete admin);
-    check and modify admin profile information;
-    admin logout.
+    for admin:
+        admin login;
+        movie management(check, add, modify and delete movie);
+        movie schedule management with selected movie(check, add, modify and delete movie schedule);
+        cinema management(check, add, modify and delete cinema);
+        hall management with selected cinema(check, add, modify and delete hall);
+        order management(check orders);
+        admin management(only manager have the Permission)(check, add, modify(only the position) and delete admin);
+        check and modify admin profile information;
+        admin logout.
 
 
 
