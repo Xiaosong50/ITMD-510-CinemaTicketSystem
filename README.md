@@ -12,7 +12,7 @@ Also, you can change the DBConnection.java file to connect other database, examp
     private static final String PASSWORD = "your password";
 
 For the first time running this project, there will be 14 tables created,
-and insert some initial data, including: user, admins, payments, movie, actor, director, cinema, hall, seat, movie schedule, seat schedule, admin_managment.
+and insert some initial data, including: user, admins, payments, movie, actor, director, cinema, hall, seat, movie schedule, seat schedule, admin_managment etc.
 
 There are 14 tables the project used:
     
