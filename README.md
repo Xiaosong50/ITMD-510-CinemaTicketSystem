@@ -7,7 +7,7 @@ The URL of Database:
 Also, you can change the DBConnection.java file to connect other database, example:
 
     private static final String URL = "jdbc:mysql://www.papademas.net:3307/510fp?autoReconnect=true&useSSL=false";
-                            You can change the URL to you database, like "jdbc:mysql://localhost:3306/fp510"
+            You can change the URL to you database, like "jdbc:mysql://localhost:3306/fp510"
     private static final String USER = "your database user name";
     private static final String PASSWORD = "your password";
 
