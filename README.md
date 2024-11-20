@@ -11,9 +11,9 @@ Also, you can change the DBConnection.java file to connect other database, examp
     private static final String USER = "your database user name";
     private static final String PASSWORD = "your password";
 
-For login:
+For login:(initial login)
 
-    For user:
+    For user: (You also can register a new user to login)
     Username: user1; Password: 123456.
     
     For admin: 
@@ -71,11 +71,12 @@ The functions of the project:
     
     For user:
         user login;
+        user register;
         check movies;
         search movies;
         check movie details;
         check movie schedules;
-        check seats;
+        check and pick seats with selected movie;
         buy tickets;
         check and modify user profile information;
         check history orders;
