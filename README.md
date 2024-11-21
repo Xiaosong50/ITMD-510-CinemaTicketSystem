@@ -65,7 +65,7 @@ There are 14 tables the project used:
     order_seat_id(PK), order_id(FK), seat_schedule_id(FK)
     
     14. xl_admin_management:
-    manager_id(PK,FK), admin_id(PK,FK)
+    manager_id(PK,FK)(referece admins(admin_id)), admin_id(PK,FK)
     
 The functions of the project:
     
