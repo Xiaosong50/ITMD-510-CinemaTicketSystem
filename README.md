@@ -10,6 +10,8 @@ Also, you can change the DBConnection.java file to connect other database, examp
             You can change the URL to you database, like "jdbc:mysql://localhost:3306/fp510"
     private static final String USER = "your database user name";
     private static final String PASSWORD = "your password";
+    
+Navigate to src/application/Main.java and run the file to start the application.
 
 For login:(initial login)
 
