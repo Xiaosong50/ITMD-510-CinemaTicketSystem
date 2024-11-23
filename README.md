@@ -95,6 +95,8 @@ The functions of the project:
         check and modify admin profile information;
         admin logout.
 
+ERD
+<img width="471" alt="image" src="https://github.com/user-attachments/assets/208be397-57fd-4ff5-8fe2-3aea4d7073f6">
 
 
 
