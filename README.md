@@ -1,4 +1,4 @@
-This project is made by JAVA, JavaFX, JBDC, MySQL.
+This project is made by JAVA, JavaFX, MySQL.
 
 The URL of Database:
 
